@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yevin Bollegala | 3D Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg: #0b0d17;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* The 3D Canvas Background */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6; /* Slight fade so text pops */
+        }
+
+        /* Main Layout */
+        main {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        /* Glass Cards for Projects/Skills */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 2.5rem;
+            margin-top: 4rem;
+            border-left: 5px solid var(--secondary);
+            padding-left: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <main>
+        <nav>
+            <div class="logo">YB.</div>
+            <div>
+                <a href="#contact" class="btn">Let's Talk</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <p style="color: var(--primary); letter-spacing: 2px;">HI, I AM</p>
+            <h1>Yevin<br>Bollegala</h1>
+            <p class="subtitle">
+                I build immersive web experiences and intelligent chatbots. 
+                Expert in HTML, CSS, JavaScript, and conversational AI.
+            </p>
+            <a href="#projects" class="btn">View My Work</a>
+        </section>
+
+        <h2 class="section-title">My Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Frontend Development</h3>
+                <p>Crafting responsive websites using HTML5, Modern CSS3, and JavaScript (ES6+). Focusing on performance and interactivity.</p>
+            </div>
+            <div class="card">
+                <h3>Chatbot Engineering</h3>
+                <p>Designing conversational flows and integrating AI-driven chatbots to automate support and enhance user engagement.</p>
+            </div>
+            <div class="card">
+                <h3>3D & Interactive</h3>
+                <p>Implementing 3D elements using WebGL and Three.js to create unique, standout user interfaces.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="projects">Recent Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>E-Commerce Bot</h3>
+                <p>A JavaScript-based chatbot that handles customer queries and processes basic orders automatically.</p>
+            </div>
+            <div class="card">
+                <h3>Portfolio 2.0</h3>
+                <p>A fully responsive personal website featuring 3D animations and modern glassmorphism UI.</p>
+            </div>
+            <div class="card">
+                <h3>Interactive Dashboard</h3>
+                <p>A CSS Grid powered admin panel with real-time data visualization using JS.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="contact">Contact Me</h2>
+        <div class="grid">
+            <div class="card" style="text-align: center;">
+                <h3>Ready to work together?</h3>
+                <p style="margin-bottom: 20px;">I'm currently available for freelance projects.</p>
+                <a href="mailto:yevin@example.com" class="btn">Whatsapp +44 7719762080</a>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; padding: 4rem 0; opacity: 0.5;">
+            &copy; 2025 Yevin Bollegala. Built with Three.js.
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // 1. Scene Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); // Alpha true allows CSS background to show
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // 2. Create the Geometry (The "Wireframe Globe")
+        const geometry = new THREE.IcosahedronGeometry(10, 2); // Radius 10, Detail 2
+        const material = new THREE.MeshBasicMaterial({ 
+            color: 0x00f2ff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Add some floating particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 700;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 50; // Spread particles
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0x7000ff
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        camera.position.z = 20;
+
+        // 3. Mouse Interaction Logic
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        // 4. Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the main sphere
+            sphere.rotation.y += 0.002;
+            sphere.rotation.x += 0.001;
+
+            // Rotate particles slowly
+            particlesMesh.rotation.y = -mouseX * 0.5;
+            particlesMesh.rotation.x = -mouseY * 0.5;
+
+            // Parallax effect based on mouse
+            sphere.rotation.y += 0.05 * (mouseX - sphere.rotation.y);
+            sphere.rotation.x += 0.05 * (mouseY - sphere.rotation.x);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // 5. Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
